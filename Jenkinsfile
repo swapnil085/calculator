@@ -4,7 +4,7 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'ls'
-                sh 'curl -H "Content-Type: application/json" --data "{"build": true}" -X POST https://registry.hub.docker.com/u/swapnil085/calculator/trigger/a06de0ab-fb4a-43e1-bd3f-8b8aa7c65372/'
+                sh 'curl -H "Content-Type: application/json" --data "{"build": true}" -X POST https://registry.hub.docker.com/u/swapnil085/calculator/trigger/d4bdafcd-8b0c-42db-8b50-adbf006a888d/'
             }
         }
     }
