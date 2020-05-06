@@ -8,8 +8,10 @@ pipeline {
             }
         }
         stage('test'){
-            sh 'pip3 install pytest'
-            sh 'pytest'
+            steps {
+                sh 'pip3 install pytest'
+                sh 'pytest'
+            }
         }
         stage('Deploy') {
             steps {
