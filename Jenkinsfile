@@ -1,16 +1,29 @@
 pipeline {
+    environment {
+        registry = "swapnil085/calculator"
+        registryCredential = 'Swapnil@123'
+        dockerImage = ''
+    }
     agent any
     stages {
         stage('Build') {
-            steps {
-                sh 'ls'
-                sh 'curl -H "Content-Type: application/json" --data "{"build": true}" -X POST https://registry.hub.docker.com/u/swapnil085/calculator/trigger/d4bdafcd-8b0c-42db-8b50-adbf006a888d/'
+            script {
+                dockerImage = docker.build registry + ":$BUILD_NUMBER"
             }
         }
         stage('test'){
             steps {
                 sh 'pip3 install pytest'
                 sh 'pytest'
+            }
+        }
+        stage('Archive'){
+            steps{
+                script {
+                    docker.withRegistry( '', registryCredential ) {
+                    dockerImage.push()
+            }
+        }
             }
         }
         stage('Deploy') {
