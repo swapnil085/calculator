@@ -1,7 +1,7 @@
 pipeline {
     environment {
         registry = "swapnil085/calculator"
-        registryCredential = 'Swapnil@123'
+        registryCredential = '4896be8b-c410-4e65-afee-fea935a8d05d'
         dockerImage = ''
     }
     agent any
